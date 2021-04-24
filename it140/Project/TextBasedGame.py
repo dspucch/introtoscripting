@@ -9,16 +9,11 @@ def instructions():
     print('Type the item name to place in inventory.')
     print('At anytime if you want to quit type "quit".')
 
-
-#def showStatus(current_room, **inventory):
-
-
-#current_room = rooms['Common Room']
-#inventory = []
-#rooms = []
-
-#showStatus(inventory)
-
+def showStatus(current_room, inventory):
+    print('\nYou are in {}.'.format(current_room['name']))
+    print('You see a {}. Do you want it?.'.format(current_room['item'], ))
+    print(f'Your inventory is {inventory}')
+    print('---------------------------------------------')
 
 def main():
     # data: rooms, items
@@ -38,17 +33,14 @@ def main():
 
     while True:
         # show user status
-        print('\nYou are in {}.'.format(current_room['name']))
-        print('You see a {}. Do you want it?.'.format(current_room['item'], ))
-        print(f'Your inventory is {inventory}')
-        print('---------------------------------------------')
-
+        showStatus(current_room, inventory)
         # get user input
         command = input('Enter your move:\n').lower()
 
         # movement
+
         if command in directions:
-            if command in current_room:
+            if command in rooms:
                 current_room = rooms[current_room[command]]
             elif (command not in directions) or (command not in current_room['item']):
                 print('Invalid command.')
@@ -72,7 +64,6 @@ def main():
             exit()
         # bad command
         return inventory
-
 
 instructions()
 main()
