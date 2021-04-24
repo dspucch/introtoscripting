@@ -32,12 +32,12 @@ def main():
     inventory = []
 
     while True:
-        # show user status
+        #show user status
         showStatus(current_room, inventory)
-        # get user input
+        #get user input
         command = input('Enter your move:\n').lower()
 
-        # movement
+        #movement
 
         if command in directions:
             if command in rooms:
